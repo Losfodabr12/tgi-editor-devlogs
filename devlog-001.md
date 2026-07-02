@@ -1,38 +1,52 @@
-﻿# Devlog 001 — O inicio do TGI Editor
+﻿# Devlog 001 - O inicio do TGI Editor
 
-**Data:** 02/07/2026
+**Data:** 02/07/2026 | **Status:** Alpha | **Testes:** 73 passados
+
+---
 
 ## O que e o TGI Editor?
 
-O TGI Editor e o modulo de edicao de video do **TGI App Suite**, um desktop app feito em Flutter focado em montagem rapida de clipes, overlays e trilhas de audio.
+O TGI Editor e o modulo de edicao de video do **TGI App Suite** - desktop app em Flutter 3.44 / Dart 3.12 para montagem rapida de clipes. 837 arquivos, ~14k linhas.
 
-## O que ja foi implementado
+---
 
-- **Media Pool** — Importacao de videos, imagens e audios
-- **Timeline multi-trilha** — Video, audio, imagem e texto
-- **Ferramentas de edicao** — Corte, duplicacao, undo/redo
-- **Overlays** — Imagem e texto com ajuste no preview
-- **Controles de audio** — Volume, velocidade, fades, waveform
-- **Projetos** — Salvamento JSON com deteccao de midias ausentes
-- **Exportacao MP4** — Via FFmpeg configravel
+## Implementado
+
+- **Media Pool:** Importacao video/audio/imagem com inspecao FFmpeg
+- **Timeline:** Trilhas video/audio/imagem/texto, markers, drag-drop, copiar/colar
+- **Corte:** Split no playhead com sync grupo video/audio
+- **Preview:** media_kit com workaround BGRA no Windows
+- **Audio:** Volume, waveform real, speed 0.25x-4.0x, fades
+- **Overlays:** Imagem/texto com posicao/tamanho/cor/opacidade
+- **Projetos:** JSON v2 save/load com deteccao de midia
+- **Undo/Redo:** Snapshots 50 estados
+- **Export:** MP4 H.264/AAC com overlays/fades/velocidade
 
 ## Stack
 
 | Tecnologia | Versao |
 |------------|--------|
-| Flutter | 3.44 |
-| Dart | 3.12 |
-| media_kit | Preview de video |
-| file_picker | Importacao |
-| FFmpeg | Exportacao |
+| Flutter | 3.44.4 stable |
+| Dart | 3.12.2 |
+| media_kit | 1.2.6 |
+| file_picker | 11.0.2 |
+| FFmpeg | Externo |
+| Material | 3 |
+
+## Validacao
+
+- flutter analyze: No issues found (10.4s)
+- flutter test: 73 tests passed
 
 ## Proximos passos
 
-- Interface da timeline
+- Relink de midia ausente
+- Export audio-only
+- Persistir waveform no projeto
+- Trimming por handles
 - Transicoes entre clipes
-- Preview em tempo real
-- Sistema de plugins
+- Preview em tempo real mais estavel
 
 ---
 
-_Tags: flutter video-editor tgi-app-suite_
+*Tags: flutter, video-editor, tgi-app-suite, devlog*

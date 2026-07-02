@@ -1,16 +1,25 @@
-﻿# Devlog [NUMERO] — [DATA]
+﻿# Devlog [NUMERO] - [TITULO]
+
+**Data:** [DATA] | **Status:** [STATUS]
+
+---
 
 ## O que foi feito
--
 
-## Prints / GIFs
-!
+- 
 
-## Desafios / Problemas
--
+## Prints / Demonstracao
+
+![]()
+
+## Desafios
+
+- 
 
 ## Proximo passo
--
 
-## Notas
--
+- 
+
+---
+
+*Tags: flutter, video-editor, tgi-app-suite*
