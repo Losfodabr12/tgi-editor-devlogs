@@ -1,6 +1,10 @@
-﻿# Devlog 002 - IA Assistente de Edicao
+﻿# Devlog 002 - IA Assistente de Edicao (IDEIA)
 
-**Data:** 02/07/2026 | **Status:** Planejamento | **Feature:** IA Editor
+**Data:** 02/07/2026 | **Status:** Planejamento / Ideia | **Feature:** IA Editor
+
+---
+
+> ⚠️ **ATENCAO:** Este devlog descreve uma **ideia/planejamento** para o futuro do TGI Editor. NADA do que esta descrito aqui foi implementado ainda. E uma visao do que pretendemos construir.
 
 ---
 
@@ -12,7 +16,7 @@ Exemplo: *corta um highlight de PvP, bota um som quando o jogo finaliza e recort
 
 ---
 
-## Como funciona
+## Como funcionaria
 
 ### 1. O usuario fala o que quer
 
@@ -24,13 +28,13 @@ Exemplo: *corta um highlight de PvP, bota um som quando o jogo finaliza e recort
 { "comando": "faz um clipe dos melhores momentos..." }
 ```
 
-O editor monta um pacote com:
+O editor montaria um pacote com:
 - Timeline atual (clips, marcadores, duracoes)
 - Media pool (arquivos disponiveis)
 - Waveforms com timestamps de picos de audio
 - Acoes disponiveis (cortar, split, volume, overlay, export)
 
-### 3. A IA processa e responde com acoes
+### 3. A IA processaria e responderia com acoes
 
 ```json
 { "actions": [
@@ -44,25 +48,25 @@ O editor monta um pacote com:
 ], "explicacao": "Detectei o som de vitoria aos 45.2s, recortei 4s antes, adicionei trilha de fundo com fade" }
 ```
 
-### 4. O controller executa
+### 4. O controller executaria
 
-O `EditorController` (que voce ja tem) recebe as acoes e executa uma por uma usando os metodos existentes: `splitAt()`, `addTrack()`, `importMedia()`, `setVolume()`, etc.
+O `EditorController` (que ja existe) receberia as acoes e executaria uma por uma usando os metodos ja implementados: `splitAt()`, `addTrack()`, `importMedia()`, `setVolume()`, etc.
 
 ---
 
-## Inteligencia que a IA precisa ter
+## Inteligencia que a IA precisaria ter
 
-| Capacidade | Como fazer |
+| Capacidade | Como faria |
 |------------|-----------|
 | Entender audio | Extrair waveform + timestamps do FFmpeg e mandar como contexto
 | Reconhecer sons especificos | Comparar picos de amplitude ou usar modelo leve de audio classification
-| Cortar no momento certo | A IA recebe os timestamps exatos dos picos e calcula offsets
-| Manter coesao | A IA ve a timeline inteira como JSON, sabe onde cada coisa esta
-| Desfazer cagada | Undo/redo ja existe, a IA so manda mais acoes
+| Cortar no momento certo | A IA receberia os timestamps exatos dos picos e calcularia offsets
+| Manter coesao | A IA veria a timeline inteira como JSON, saberia onde cada coisa esta
+| Desfazer cagada | Undo/redo ja existe, a IA so mandaria mais acoes
 
 ---
 
-## API gratuita pra comecar
+## API gratuita pra considerar
 
 | API | Cota gratis | Modelo |
 |-----|-------------|--------|
@@ -72,7 +76,7 @@ O `EditorController` (que voce ja tem) recebe as acoes e executa uma por uma usa
 
 ---
 
-## Arquivos novos necessarios
+## Arquivos que seriam criados
 ```
 lib/features/editor/application/ai_assistant_service.dart  # Servico de IA
 lib/features/editor/application/ai_context_builder.dart     # Monta contexto da timeline
@@ -83,7 +87,7 @@ lib/features/editor/domain/models/ai_action.dart            # Modelo de acao
 
 ---
 
-## Riscos e limites
+## Riscos e limites previstos
 
 - **Custo:** APIs gratuitas tem limite, mas 1500 req/dia da pra muito teste
 - **Token limit:** Contexto da timeline pode ser grande - comprimir JSON ou usar resumo
@@ -93,4 +97,4 @@ lib/features/editor/domain/models/ai_action.dart            # Modelo de acao
 
 ---
 
-*Tags: ai, flutter, video-editor, tgi-app-suite, devlog, gemini*
+*Tags: ai, flutter, video-editor, tgi-app-suite, devlog, ideia, planejamento*
